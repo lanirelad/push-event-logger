@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LOG SVC</title>
+    <link rel="stylesheet" href="static/logSvc.css">
+    <link rel="icon" href="static/logFile.png" type="image/png" sizes="any">
+</head>
+<body>
+    <h1>Logging Manager</h1>
+    <table id="payloadsTable">
+        <thead>
+
+            <tr id="headers">
+                <th>Commit ID</th>
+                <th>Repository Name</th>
+                <th>Commit Timestamp</th>
+                <th>Author</th>
+                <th>Commit Message</th>
+                <th>Added</th>
+                <th>Removed</th>
+                <th>Modified</th>
+                <th>URL</th>
+            </tr>
+            
+        </thead>
+        
+        <tbody>
+            {% for commit in commits %}
+                <tr>
+                    <td>{{commit.commitID}}</td>
+                    <td>{{commit.repoName}}</td>
+                    <td>{{commit.timestamp}}</td>
+                    <td>{{commit.author}}</td>
+                    <td>{{commit.message}}</td>
+                    <td>{{commit.added}}</td>
+                    <td>{{commit.removed}}</td>
+                    <td>{{commit.modified}}</td>
+                    <td>{{commit.url}}</td>
+                </tr>
+            {% endfor %}
+        </tbody>    
+    </table>
+
+    <!-- BRING THEM HOME NOW -->
+    <!-- <script src="static/contactsMain.js"></script>  -->
+    <div id="bthn" lang="en"></div><script>
+        (function () {
+           var script = document.createElement("script");
+           script.type = "text/javascript";
+           script.src = "https://bringthemhomenow.net/1.1.0/hostages-ticker.js";
+           script.setAttribute(
+             "integrity",
+             "sha384-DHuakkmS4DXvIW79Ttuqjvl95NepBRwfVGx6bmqBJVVwqsosq8hROrydHItKdsne"
+           );
+           script.setAttribute("crossorigin", "anonymous");
+           document.getElementsByTagName("head")[0].appendChild(script);
+         })();
+        </script>
+
+</body>
+</html>
