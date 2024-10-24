@@ -4,6 +4,7 @@ from utils import saveWebhookData, readWebhookData, processWebhookData
 bp = Blueprint('main', __name__)
 webhooksLst = []
 parsedDict = {}
+webhookFilePath = '/workingDir/webhook_data.json'
 
 # route to create main page
 @bp.route('/')
@@ -42,7 +43,7 @@ def show_payload():
 # route to show log file
 @bp.route('/log')
 def show_log():
-    with open('C:/Users/elad.GLOBUS0/Desktop/private/project/devops/classroom/GitHub Push Event Logging Service/webhook_data.json', 'r') as f:
+    with open(webhookFilePath, 'r') as f:
         log_data = f.read()
      # Wrap the log data in a <pre> tag to preserve formatting
     return f"<pre>{log_data}</pre>"

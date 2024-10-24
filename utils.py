@@ -1,7 +1,7 @@
 import json
 import os
 
-webhookFilePath = 'C:/Users/elad.GLOBUS0/Desktop/private/project/devops/classroom/GitHub Push Event Logging Service/webhook_data.json'
+webhookFilePath = '/workingDir/webhook_data.json'
 
 # function to save webhook data
 def saveWebhookData(webDict):
