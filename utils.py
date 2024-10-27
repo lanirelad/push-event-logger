@@ -12,10 +12,20 @@ def saveWebhookData(webDict):
             with open(webhookFilePath, 'r+') as f:
                 existing_data = json.load(f)
                 
-                if isinstance(existing_data, list):
-                    existing_data.extend(webDict)
-                    f.seek(0)
-                    json.dump(existing_data, f, indent=4)
+                # Extract commit IDs from existing data for comparison
+                existing_commit_ids = {entry['commitID'] for entry in existing_data}
+                
+                # Filter out entries in webDict that are already in existing_data
+                new_data = []
+                for entry in webDict:
+                    if entry['commitID'] not in existing_commit_ids:
+                        new_data.append(entry)
+
+                # append only the unique new entries to the existing data
+                existing_data.extend(new_data)
+                # save the updated list to file
+                f.seek(0)
+                json.dump(existing_data, f, indent=4)
         else:
             with open(webhookFilePath, 'w') as f:
                 json.dump(webDict, f, indent=4)  # start a new list if file doesn't exist or is empty
