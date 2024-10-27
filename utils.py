@@ -5,6 +5,9 @@ webhookFilePath = '/workingDir/webhook_data.json'
 
 # function to save webhook data
 def saveWebhookData(webDict):
+    # Ensure webDict is a list for consistent handling
+    if not isinstance(webDict, list):
+        webDict = [webDict]
     
     try:
         # check if file exists and if it's valid JSON
@@ -12,10 +15,10 @@ def saveWebhookData(webDict):
             with open(webhookFilePath, 'r+') as f:
                 existing_data = json.load(f)
                 
-                # Extract commit IDs from existing data for comparison
+                # extract commit IDs from existing data for comparison
                 existing_commit_ids = {entry['commitID'] for entry in existing_data}
                 
-                # Filter out entries in webDict that are already in existing_data
+                # filter out entries in webDict that are already in existing_data
                 new_data = []
                 for entry in webDict:
                     if entry['commitID'] not in existing_commit_ids:
@@ -25,6 +28,7 @@ def saveWebhookData(webDict):
                 existing_data.extend(new_data)
                 # save the updated list to file
                 f.seek(0)
+                f.truncate()  # Clear the file before writing
                 json.dump(existing_data, f, indent=4)
         else:
             with open(webhookFilePath, 'w') as f:
