@@ -12,4 +12,7 @@ ADD . /workingDir
 RUN pip install -r requirements.txt 
 
 # Run app
-ENTRYPOINT ["sh", "-c", "python main.py"]
+CMD ["python", "main.py"]
+
+# # Run app
+# ENTRYPOINT ["sh", "-c", "python main.py"]
