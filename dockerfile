@@ -12,7 +12,7 @@ ADD . /workingDir
 RUN pip install --no-cache-dir -r requirements.txt
 
 # Run app
-CMD ["sh", "-c", "python main.py"]
+CMD ["python", "main.py"]
 
 # # Run app
 # ENTRYPOINT ["sh", "-c", "python main.py"]
