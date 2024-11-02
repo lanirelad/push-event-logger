@@ -3,13 +3,14 @@
 FROM python:3.12-slim
 
 # Set the working directory in the container
-WORKDIR ./workingDir
+WORKDIR /workingDir
 
 # Copy the Python script into the container
-COPY . ./workingDir
+COPY . /workingDir
 
 # install requirements
 RUN pip install --no-cache-dir -r requirements.txt
 
 # # Run app
-ENTRYPOINT ["python", "main.py"]
+CMD [ "ls-l /" ]
+#ENTRYPOINT ["python", "main.py"]
