@@ -6,8 +6,8 @@ FROM python:3.12-slim
 WORKDIR /workingDir
 
 # Copy the Python script into the container
-ADD . /workingDir
-
+# ADD . /workingDir
+COPY . . 
 # install requirements
 RUN pip install --no-cache-dir --timeout=100 -r requirements.txt
 
