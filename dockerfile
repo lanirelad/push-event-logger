@@ -9,7 +9,7 @@ WORKDIR /workingDir
 ADD . /workingDir
 
 # install requirements
-RUN pip install --no-cache-dir -r requirements.txt
+RUN pip install --no-cache-dir --timeout=100 -r requirements.txt
 
 # Run app
 ENTRYPOINT ["python", "main.py"]
