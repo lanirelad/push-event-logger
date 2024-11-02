@@ -6,7 +6,7 @@ FROM python:3.12-slim
 WORKDIR /workingDir
 
 # Copy the Python script into the container
-COPY . /workingDir
+ADD . /workingDir
 
 # install requirements
 RUN pip install --no-cache-dir -r requirements.txt
