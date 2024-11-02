@@ -6,10 +6,10 @@ FROM python:3.12-slim
 WORKDIR /workingDir
 
 # Copy the Python script into the container
-COPY . /workingDir
+ADD . /workingDir
 
 # install requirements
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Run app
-ENTRYPOINT ["python",  "main.py"]
+# # Run app
+ENTRYPOINT ["sh", "-c", "python3 main.py"]
