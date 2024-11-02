@@ -1,4 +1,4 @@
-from flask import Blueprint, request, render_template, jsonify
+from flask import Blueprint, redirect, request, render_template, jsonify
 from utils import saveWebhookData, readWebhookData, processWebhookData
 
 bp = Blueprint('main', __name__)
@@ -27,7 +27,8 @@ def webhook_arrived():
         parsedDict = processWebhookData(webhook_data)
         print(parsedDict)
         saveWebhookData(parsedDict)
-        return jsonify({"message": "Webhook received and saved."}), 200
+        # return jsonify({"message": "Webhook received and saved."}), 200
+        return redirect('/')
     else:
         return jsonify({"message": "No webhook data provided."}), 400
 
