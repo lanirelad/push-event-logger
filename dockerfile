@@ -11,6 +11,5 @@ ADD . /workingDir
 # install requirements
 RUN pip install --no-cache-dir -r requirements.txt
 
-# # Run app
-CMD [ "ls-l /" ]
-#ENTRYPOINT ["python", "main.py"]
+# Run app
+ENTRYPOINT ["python", "main.py"]
