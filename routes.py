@@ -28,7 +28,7 @@ def webhook_arrived():
         print(parsedDict)
         saveWebhookData(parsedDict)
         # return jsonify({"message": "Webhook received and saved."}), 200
-        return render_template('webhook_received.html')
+        return render_template('webhookReceived.html')
     else:
         return jsonify({"message": "No webhook data provided."}), 400
 
